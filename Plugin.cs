@@ -36,13 +36,25 @@ public static class HealerPlus
 
         // 既に変異治癒のポーションが存在するか確認
         bool hasPotion = chestCard.things.Any(item => Regex.IsMatch(item.NameSimple, "mutation|変異治癒|变异"));
+        // 変異治癒のポーションが存在しない場合のみに追加処理を行う
+        if (!hasPotion)
+        {
+            // 変異治癒のポーションを追加
+            Thing cureMutationPotion = ThingGen.CreatePotion(8480).Identify(false, (IDTSource)1);
+            cureMutationPotion.SetNum(10);
+            chestCard.AddThing(cureMutationPotion, true, -1, -1);
+        }
 
-        // 既に変異治癒のポーションが存在する場合は処理を終了
-        if (hasPotion) return;
-
-        // 変異治癒のポーションを追加
-        Thing cureMutationPotion = ThingGen.CreatePotion(8480).Identify(false, (IDTSource)1);
-        cureMutationPotion.SetNum(10);
-        chestCard.AddThing(cureMutationPotion, true, -1, -1);
+        // 既に致命傷治癒の杖が存在するか確認
+        bool hasCriticalHealRod = chestCard.things.Any(item => Regex.IsMatch(item.NameOne, "rod of cure critical wound|致命傷治癒の杖|致命伤治疗之杖"));
+        // 致命傷治癒の杖が存在しない場合のみに追加処理を行う
+        if (!hasCriticalHealRod)
+        {
+            // 致命傷治癒の杖を追加
+            Thing criticalHealRod = ThingGen.CreateRod(8402).Identify(false, (IDTSource)1);
+            criticalHealRod.SetNum(1);
+            criticalHealRod.ModCharge(3);
+            chestCard.AddThing(criticalHealRod, true, -1, -1);
+        }
     }
 }

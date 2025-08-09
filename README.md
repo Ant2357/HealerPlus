@@ -10,3 +10,5 @@
 ## Enhancements
 * Potion for curing mutations always available for purchase.
 * 変異治癒のポーションを常時販売するようにする。
+* Rod of cure critical wound always available for purchase.
+* 致命傷治癒の杖を常時販売するようにする。
