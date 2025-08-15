@@ -4,7 +4,7 @@
 
 <div align="center">
   <p>This is a mod that enhances the Healer in Elin.</p>
-  <p>これは Elin にて、癒し手を強化する Mod です。</p>
+  <p>これは Elin にて、癒し手の品揃えを強化する Mod です。</p>
 </div>
 
 ## Enhancements
