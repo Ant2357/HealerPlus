@@ -8,6 +8,6 @@ This is a mod that enhances the Healer in Elin.
 [*]Rod of cure critical wound always available for purchase.
 [/list]
 [list]
-[*]変異治癒のポーションを常時販売するようにする。
-[*]致命傷治癒の杖を常時販売するようにする。
+[*]変異治癒のポーションを常に販売するようにします。
+[*]致命傷治癒の杖を常に販売するようにします。
 [/list]
