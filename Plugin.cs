@@ -3,7 +3,7 @@ using HarmonyLib;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-[BepInPlugin("ant2357.healer_plus", "Healer Plus", "1.0.0")]
+[BepInPlugin("ant2357.healer_plus", "Healer Plus", "1.1.0")]
 public class Plugin : BaseUnityPlugin
 {
     public void OnStartCore()
@@ -25,6 +25,7 @@ public static class HealerPlus
         // 在庫補充時のみ処理を行う
         if (!__instance.owner.isRestocking) return;
 
+
         // 商人のチェストを取得または作成
         Thing chest = __instance.owner.things.Find("chest_merchant", -1, -1);
         if (chest == null)
@@ -34,9 +35,8 @@ public static class HealerPlus
         }
         Card chestCard = (Card)chest;
 
-        // 既に変異治癒のポーションが存在するか確認
-        bool hasPotion = chestCard.things.Any(item => Regex.IsMatch(item.NameSimple, "mutation|変異治癒|变异"));
         // 変異治癒のポーションが存在しない場合のみに追加処理を行う
+        bool hasPotion = chestCard.things.Any(item => Regex.IsMatch(item.NameSimple, "mutation|変異治癒|变异"));
         if (!hasPotion)
         {
             // 変異治癒のポーションを追加
@@ -45,9 +45,8 @@ public static class HealerPlus
             chestCard.AddThing(cureMutationPotion, true, -1, -1);
         }
 
-        // 既に致命傷治癒の杖が存在するか確認
-        bool hasCriticalHealRod = chestCard.things.Any(item => Regex.IsMatch(item.NameOne, "rod of cure critical wound|致命傷治癒の杖|致命伤治疗之杖"));
         // 致命傷治癒の杖が存在しない場合のみに追加処理を行う
+        bool hasCriticalHealRod = chestCard.things.Any(item => Regex.IsMatch(item.NameOne, "rod of cure critical wound|致命傷治癒の杖|致命伤治疗之杖"));
         if (!hasCriticalHealRod)
         {
             // 致命傷治癒の杖を追加
@@ -55,6 +54,16 @@ public static class HealerPlus
             criticalHealRod.SetNum(1);
             criticalHealRod.ModCharge(3);
             chestCard.AddThing(criticalHealRod, true, -1, -1);
+        }
+
+        // 致命傷治癒の魔法書が存在しない場合のみに追加処理を行う
+        bool hasCriticalHealBook = chestCard.things.Any(item => Regex.IsMatch(item.NameOne, "spellbook of cure critical wound|致命傷治癒の魔法書|致命伤治疗魔法书"));
+        if (!hasCriticalHealBook)
+        {
+            // 致命傷治癒の魔法書を追加
+            Thing criticalHealBook = ThingGen.CreateSpellbook(8402).Identify(false, (IDTSource)1);
+            criticalHealBook.ModCharge(3);
+            chestCard.AddThing(criticalHealBook, true, -1, -1);
         }
     }
 }
