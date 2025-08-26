@@ -3,7 +3,7 @@ using HarmonyLib;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-[BepInPlugin("ant2357.healer_plus", "Healer Plus", "1.1.0")]
+[BepInPlugin("ant2357.healer_plus", "Healer Plus", "1.1.1")]
 public class Plugin : BaseUnityPlugin
 {
     public void OnStartCore()
@@ -50,7 +50,10 @@ public static class HealerPlus
         if (!hasCriticalHealRod)
         {
             // 致命傷治癒の杖を追加
-            Thing criticalHealRod = ThingGen.CreateRod(8402).Identify(false, (IDTSource)1);
+            Thing criticalHealRod = ThingGen.Create("rod");
+            TraitRod.Create(criticalHealRod, 8402);
+
+            criticalHealRod.Identify(false, (IDTSource)1);
             criticalHealRod.SetNum(1);
             criticalHealRod.ModCharge(3);
             chestCard.AddThing(criticalHealRod, true, -1, -1);
