@@ -18,9 +18,15 @@
 * Potion for curing mutations always available for purchase.
 * Rod of cure critical wound always available for purchase.
 * Spellbook of cure critical wound always available for purchase.
+
+<br>
+
 * 変異治癒のポーションを常に販売するようにします。
 * 致命傷治癒の杖を常に販売するようにします。
 * 致命傷治癒の魔法書を常に販売するようにします。
+
+<br>
+
 * 始终出售变异治愈药水。
 * 始终出售致命伤治愈之杖。
 * 始终出售致命伤治愈魔法书。
