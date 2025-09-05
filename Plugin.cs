@@ -3,7 +3,7 @@ using HarmonyLib;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-[BepInPlugin("ant2357.healer_plus", "Healer Plus", "1.1.1")]
+[BepInPlugin("ant2357.healer_plus", "Healer Plus", "2.0.0")]
 public class Plugin : BaseUnityPlugin
 {
     public void OnStartCore()
@@ -34,6 +34,19 @@ public static class HealerPlus
             __instance.owner.AddThing(chest, true, -1, -1);
         }
         Card chestCard = (Card)chest;
+
+
+        // ノイエルの癒し手だけ免罪符の販売を行う
+        string nowZoneName = EClass.game.activeZone.Name;
+        bool isNoiel = Regex.IsMatch(nowZoneName, "Noyel|ノイエル|诺耶尔");
+        bool hasStrangeScroll = chestCard.things.Any(item => Regex.IsMatch(item.NameSimple, "indulgence|免罪符"));
+        if (isNoiel && !hasStrangeScroll)
+        {
+            Thing strangeScroll = ThingGen.Create("1085", -1).Identify(false, (IDTSource)1);
+            strangeScroll.SetNum(6);
+            chestCard.AddThing(strangeScroll, true, -1, -1);
+        }
+
 
         // 変異治癒のポーションが存在しない場合のみに追加処理を行う
         bool hasPotion = chestCard.things.Any(item => Regex.IsMatch(item.NameSimple, "mutation|変異治癒|变异"));
