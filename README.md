@@ -31,6 +31,12 @@
 * 始终出售致命伤治愈之杖。
 * 始终出售致命伤治愈魔法书。
 
+<br>
+
+* The Healer in Noyel will sell indulgences.
+* ノイエルの癒し手が免罪符を販売するようになります。
+* 诺耶尔的治疗师将开始出售免罪符。
+
 ## Author
 * Ant2357
 
