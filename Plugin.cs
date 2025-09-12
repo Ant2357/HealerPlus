@@ -77,7 +77,9 @@ public static class HealerPlus
         if (!hasCriticalHealBook)
         {
             // 致命傷治癒の魔法書を追加
-            Thing criticalHealBook = ThingGen.CreateSpellbook(8402).Identify(false, (IDTSource)1);
+            Thing criticalHealBook = ThingGen.Create("spellbook").SetNum(1).Identify(false, (IDTSource)1);;
+            TraitSpellbook.Create(criticalHealBook, 8402);
+
             criticalHealBook.ModCharge(3);
             chestCard.AddThing(criticalHealBook, true, -1, -1);
         }
