@@ -4,7 +4,7 @@
 
 <div align="center">
   <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3549404933">
-    <img alt="草原の上に立てられた十字架ドット絵" src="preview.jpg" width="200" height="200">
+    <img alt="薬品棚の隣に癒し手がいるドット絵" src="preview.jpg" width="200" height="200">
   </a>
 </div>
 
@@ -36,6 +36,11 @@
 * The Healer in Noyel will sell indulgences.
 * ノイエルの癒し手が免罪符を販売するようになります。
 * 诺耶尔的治疗师将开始出售免罪符。
+
+## URL: Steam Workshop::Healer Plus
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3549404933">
+  <img alt="薬品棚の隣に癒し手がいるドット絵" src="preview.jpg" width="200" height="200">
+</a>
 
 ## Author
 * Ant2357
