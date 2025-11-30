@@ -3,7 +3,7 @@ using HarmonyLib;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-[BepInPlugin("ant2357.healer_plus", "Healer Plus", "2.0.0")]
+[BepInPlugin("ant2357.healer_plus", "Healer Plus", "3.0.0")]
 public class Plugin : BaseUnityPlugin
 {
     public void OnStartCore()
@@ -71,6 +71,21 @@ public static class HealerPlus
             criticalHealRod.ModCharge(3);
             chestCard.AddThing(criticalHealRod, true, -1, -1);
         }
+
+        // 体力回復の杖が存在しない場合のみに追加処理を行う
+        bool hasHealRod = chestCard.things.Any(item => Regex.IsMatch(item.NameOne, "rod of healing|体力回復の杖|体力恢复之杖"));
+        if (!hasHealRod)
+        {
+            // 体力回復の杖を追加
+            Thing healRod = ThingGen.Create("rod");
+            TraitRod.Create(healRod, 8403);
+
+            healRod.Identify(false, (IDTSource)1);
+            healRod.SetNum(1);
+            healRod.ModCharge(3);
+            chestCard.AddThing(healRod, true, -1, -1);
+        }
+
 
         // 致命傷治癒の魔法書が存在しない場合のみに追加処理を行う
         bool hasCriticalHealBook = chestCard.things.Any(item => Regex.IsMatch(item.NameOne, "spellbook of cure critical wound|致命傷治癒の魔法書|致命伤治疗魔法书"));
